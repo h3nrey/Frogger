@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float speed;
 
+    public bool isTouchingPlataform;
+
     [SerializeField]
     private Rigidbody2D rb;
 
@@ -26,5 +28,12 @@ public class PlayerController : MonoBehaviour {
     public void Move(Vector2 dir) {
         Vector2 pos = rb.position;
         rb.MovePosition(new Vector2(pos.x + (dir.x * speed), pos.y + (dir.y * speed)));
+    }
+
+    public void OnTriggerEnter2D(Collider2D other) {
+        GameObject otherObj = other.gameObject;
+        if (otherObj.CompareTag("lake") && !isTouchingPlataform) {
+            print("Touching lake");
+        }
     }
 }
