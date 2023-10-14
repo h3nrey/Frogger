@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce03b6cc569963f4096cead48298803d, type: 3}
-  m_Name: Log
+  m_Name: car
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 200
   obj: {fileID: 0}
-  tag: 0
-  layer: 6
-  entityColor: {r: 0.1981132, g: 0.07697724, b: 0, a: 1}
+  tag: 1
+  layer: 8
+  entityColor: {r: 0.36320752, g: 0.9664378, b: 1, a: 1}

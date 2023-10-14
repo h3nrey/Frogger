@@ -6,12 +6,15 @@ using UnityEngine;
 public class MoveableEntity : ScriptableObject {
     public float speed;
     public GameObject obj;
+    public GameTagsMapper tag;
+    public GameLayers layer;
+    public Color entityColor;
+
     //public Sprite sprite;
 
     //public SpriteRenderer sprRenderer;
 
     private void Enable() {
         //sprRenderer.sprite = sprite;
-        //obj.tag = tag.;
     }
 }

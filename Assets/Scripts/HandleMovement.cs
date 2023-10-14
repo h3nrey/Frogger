@@ -17,6 +17,17 @@ public class HandleMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void OnEnable() {
+        Setup();
+    }
+
+    private void Setup() {
+        this.tag = GameTags.tags[(int)data.tag];
+        print($"entity layer: {(int)data.layer}");
+        this.gameObject.layer = (int)data.layer;
+        GetComponent<SpriteRenderer>().color = data.entityColor;
+    }
+
     private void FixedUpdate() {
         Move();
     }

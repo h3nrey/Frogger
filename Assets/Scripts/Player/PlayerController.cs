@@ -124,6 +124,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        GameObject otherObj = other.gameObject;
+
+        if (otherObj.CompareTag(GameTags.tags[(int)GameTagsMapper.CAR])) {
+            onDie?.Invoke();
+        }
+    }
+
     #endregion Collision
 
     private void Die() {
