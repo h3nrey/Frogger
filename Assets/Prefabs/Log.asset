@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce03b6cc569963f4096cead48298803d, type: 3}
   m_Name: Log
   m_EditorClassIdentifier: 
-  speed: 0
-  sprite: {fileID: 0}
-  sprRenderer: {fileID: 0}
+  speed: 50
+  obj: {fileID: 0}
