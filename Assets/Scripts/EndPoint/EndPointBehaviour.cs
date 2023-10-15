@@ -9,6 +9,9 @@ public class EndPointBehaviour : MonoBehaviour {
     [SerializeField]
     private bool isAvaiable;
 
+    [SerializeField]
+    private GameObject fillChild;
+
     private void Start() {
         Clean();
     }
@@ -17,6 +20,7 @@ public class EndPointBehaviour : MonoBehaviour {
         if (!isAvaiable) return false;
 
         print("was filled");
+        fillChild.SetActive(true);
         // update the sprite;
         isAvaiable = false;
         return true;

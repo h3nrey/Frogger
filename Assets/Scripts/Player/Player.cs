@@ -8,4 +8,5 @@ public class Player : ScriptableObject {
     public float baseSpeed;
     public int scorePerEndPoint;
     public int scoreFly;
+    public float totalTime;
 }

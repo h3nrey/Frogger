@@ -32,13 +32,23 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float speed;
 
+    [SerializeField]
+    private float minY, maxX;
+
     [Header("Initialization")]
     [SerializeField]
     private Transform startPoint;
 
+    [Header("Score")]
     // Score
     [ReadOnly]
     public int score;
+
+    [Header("Timer")]
+    // Time
+    [ReadOnly]
+    [SerializeField]
+    private float currentTime;
 
     // Filled end points
     [ReadOnly]
@@ -88,6 +98,7 @@ public class PlayerController : MonoBehaviour {
         // initialization
         isAlive = true;
         currentTries = data.tries;
+        currentTime = data.totalTime;
 
         // events
         onMove.AddListener((Vector2 dir) => Move(dir));
@@ -104,6 +115,12 @@ public class PlayerController : MonoBehaviour {
         onReachAllEndPoints.RemoveAllListeners();
     }
 
+    private void Update() {
+        if (isAlive) {
+            handlePlayerTime();
+        }
+    }
+
     private void FixedUpdate() {
         if (isAlive) {
             CheckLogCollision();
@@ -117,8 +134,12 @@ public class PlayerController : MonoBehaviour {
 
     public void Move(Vector2 dir) {
         if (!isAlive) return;
-
         Vector2 pos = rb.position;
+
+        // Locking movement to screen limit
+        if (dir == Vector2.down && pos.y <= minY) return;
+        if ((dir == Vector2.left && pos.x <= -maxX) || (dir == Vector2.right && pos.x >= maxX)) return;
+
         rb.MovePosition(new Vector2(pos.x + (dir.x * speed), pos.y + (dir.y * speed)));
     }
 
@@ -171,20 +192,40 @@ public class PlayerController : MonoBehaviour {
 
     #endregion Collision
 
+    #region Time
+
+    private void handlePlayerTime() {
+        currentTime -= Time.deltaTime;
+
+        if (currentTime <= 0) {
+            onDie?.Invoke();
+        }
+    }
+
+    #endregion Time
+
+    #region Die
+
     private void Die() {
         if (isAlive == false) return;
         isAlive = false;
-
         currentTries -= 1;
+        currentTime = data.totalTime;
+
         Coroutines.DoAfter(() => {
             RestartPlayer();
         }, 0.5f, this);
     }
 
+    #endregion Die
+
+    #region Reach
+
     private void handleWhenReachEndPoint() {
         score += data.scorePerEndPoint;
         isAlive = false;
         reachedEndPoints++;
+        currentTime = data.totalTime;
 
         if (reachedEndPoints >= 5) {
             onReachAllEndPoints?.Invoke();
@@ -202,6 +243,8 @@ public class PlayerController : MonoBehaviour {
         transform.position = startPoint.position;
         isAlive = true;
     }
+
+    #endregion Reach
 
     #region Gizmos
 
