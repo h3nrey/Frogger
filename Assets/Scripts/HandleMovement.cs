@@ -4,32 +4,31 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class HandleMovement : MonoBehaviour {
-
-    [SerializeField]
-    private MoveableEntity data;
+    public MoveableEntity data;
 
     [SerializeField]
     private Rigidbody2D rb;
 
     public float xDir;
 
+    //private bool
+
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable() {
-        Setup();
-    }
-
-    private void Setup() {
+    public void Setup() {
         this.tag = GameTags.tags[(int)data.tag];
-        print($"entity layer: {(int)data.layer}");
         this.gameObject.layer = (int)data.layer;
         GetComponent<SpriteRenderer>().color = data.entityColor;
     }
 
     private void FixedUpdate() {
         Move();
+    }
+
+    private void OnBecameInvisible() {
+        GameManager.Game.activeEntities.Release(this.gameObject);
     }
 
     private void Move() {

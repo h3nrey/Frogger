@@ -137,7 +137,6 @@ public class PlayerController : MonoBehaviour {
     private void Die() {
         if (isAlive == false) return;
         isAlive = false;
-        print("died");
 
         currentTries -= 1;
         Coroutines.DoAfter(() => {

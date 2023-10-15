@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce03b6cc569963f4096cead48298803d, type: 3}
   m_Name: Log
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 150
   obj: {fileID: 0}
   tag: 0
   layer: 6
