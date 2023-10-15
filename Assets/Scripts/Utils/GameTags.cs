@@ -7,13 +7,15 @@ public static class GameTags {
 
     public static readonly string[] tags = {
         "log",
-        "car"
+        "car",
+        "endPoint"
     };
 }
 
 public enum GameTagsMapper {
     LOG = 0,
     CAR = 1,
+    ENDPOINT = 2,
 }
 
 public enum GameLayers {

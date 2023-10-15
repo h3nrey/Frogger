@@ -7,6 +7,8 @@ using NaughtyAttributes;
 
 public class PlayerController : MonoBehaviour {
     public static PlayerController instance;
+
+    [Expandable]
     public Player data;
 
     #region Events
@@ -15,6 +17,8 @@ public class PlayerController : MonoBehaviour {
     public UnityEvent<Vector2> onMove;
 
     public UnityEvent onDie;
+    public UnityEvent onReachEndPoint;
+    public UnityEvent onReachAllEndPoints;
 
     #endregion Events
 
@@ -31,6 +35,14 @@ public class PlayerController : MonoBehaviour {
     [Header("Initialization")]
     [SerializeField]
     private Transform startPoint;
+
+    // Score
+    [ReadOnly]
+    public int score;
+
+    // Filled end points
+    [ReadOnly]
+    public int reachedEndPoints;
 
     // Log
     [Header("Log Collision")]
@@ -73,20 +85,30 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Start() {
+        // initialization
         isAlive = true;
         currentTries = data.tries;
+
+        // events
         onMove.AddListener((Vector2 dir) => Move(dir));
         onDie.AddListener(Die);
+
+        onReachEndPoint.AddListener(handleWhenReachEndPoint);
+        onReachAllEndPoints.AddListener(winLevel);
     }
 
     private void OnDestroy() {
         onMove.RemoveAllListeners();
         onDie.RemoveAllListeners();
+        onReachEndPoint.RemoveAllListeners();
+        onReachAllEndPoints.RemoveAllListeners();
     }
 
     private void FixedUpdate() {
-        CheckLogCollision();
-        CheckLakeCollision();
+        if (isAlive) {
+            CheckLogCollision();
+            CheckLakeCollision();
+        }
     }
 
     #endregion Defaul Methods
@@ -94,6 +116,8 @@ public class PlayerController : MonoBehaviour {
     #region Movement
 
     public void Move(Vector2 dir) {
+        if (!isAlive) return;
+
         Vector2 pos = rb.position;
         rb.MovePosition(new Vector2(pos.x + (dir.x * speed), pos.y + (dir.y * speed)));
     }
@@ -130,6 +154,17 @@ public class PlayerController : MonoBehaviour {
         if (otherObj.CompareTag(GameTags.tags[(int)GameTagsMapper.CAR])) {
             onDie?.Invoke();
         }
+
+        if (otherObj.CompareTag(GameTags.tags[(int)GameTagsMapper.ENDPOINT])) {
+            bool isAvaiable = otherObj.GetComponent<EndPointBehaviour>().Fill();
+
+            if (isAvaiable) {
+                onReachEndPoint?.Invoke();
+            }
+            else {
+                onDie?.Invoke();
+            }
+        }
     }
 
     #endregion Collision
@@ -140,9 +175,30 @@ public class PlayerController : MonoBehaviour {
 
         currentTries -= 1;
         Coroutines.DoAfter(() => {
-            transform.position = startPoint.position;
-            isAlive = true;
+            RestartPlayer();
         }, 0.5f, this);
+    }
+
+    private void handleWhenReachEndPoint() {
+        score += data.scorePerEndPoint;
+        isAlive = false;
+        reachedEndPoints++;
+
+        if (reachedEndPoints >= 5) {
+            onReachAllEndPoints?.Invoke();
+            return;
+        }
+
+        Coroutines.DoAfter(() => RestartPlayer(), 0.5f, this);
+    }
+
+    private void winLevel() {
+        Coroutines.DoAfter(() => RestartPlayer(), 1f, this);
+    }
+
+    private void RestartPlayer() {
+        transform.position = startPoint.position;
+        isAlive = true;
     }
 
     #region Gizmos

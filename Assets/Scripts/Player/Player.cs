@@ -5,5 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player")]
 public class Player : ScriptableObject {
     public int tries;
-    public int baseSpeed;
+    public float baseSpeed;
+    public int scorePerEndPoint;
+    public int scoreFly;
 }
