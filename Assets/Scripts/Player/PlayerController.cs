@@ -130,8 +130,10 @@ public class PlayerController : MonoBehaviour {
         Collider2D[] touchingPlataforms = Physics2D.OverlapCircleAll(plataformPoint.position, logRange, plataformLayer);
 
         if (touchingPlataforms.Length > 0) {
-            isTouchingPlataform = true;
             Transform plataform = touchingPlataforms[0].transform;
+            print($"player y: {transform.position.y} - plataform y: {plataform.position.y}");
+            isTouchingPlataform = true;
+            if (transform.position.y < plataform.position.y) return;
             transform.SetParent(plataform);
         }
         else {
