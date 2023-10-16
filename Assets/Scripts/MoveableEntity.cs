@@ -8,13 +8,10 @@ public class MoveableEntity : ScriptableObject {
     public GameObject obj;
     public GameTagsMapper tag;
     public GameLayers layer;
-    public Color entityColor;
+    public Vector2 collSize;
+    public Vector2 collOffset;
 
-    //public Sprite sprite;
-
-    //public SpriteRenderer sprRenderer;
-
-    private void Enable() {
-        //sprRenderer.sprite = sprite;
-    }
+    public bool isSimpleSprite;
+    public GameObject graphic_holder;
+    public Sprite sprite;
 }

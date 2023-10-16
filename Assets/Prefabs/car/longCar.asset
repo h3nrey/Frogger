@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce03b6cc569963f4096cead48298803d, type: 3}
+  m_Name: longCar
+  m_EditorClassIdentifier: 
+  speed: 150
+  obj: {fileID: 0}
+  tag: 1
+  layer: 8
+  collSize: {x: 1.612389, y: 0.55}
+  collOffset: {x: 0.02, y: 0}
+  isSimpleSprite: 1
+  graphic_holder: {fileID: 0}
+  sprite: {fileID: -796740953, guid: 2c186477375de124a9e9bb35cd1bfa9a, type: 3}

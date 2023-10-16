@@ -6,25 +6,61 @@ using UnityEngine;
 public class HandleMovement : MonoBehaviour {
     public MoveableEntity data;
 
-    [SerializeField]
-    private Rigidbody2D rb;
-
     public float xDir;
+
+    private Rigidbody2D rb;
+    private SpriteRenderer sprRenderer;
+    private BoxCollider2D collider;
+
+    private bool wasEnabled;
+
+    [SerializeField]
+    private bool Debuging;
 
     //private bool
 
-    private void Start() {
+    private void OnEnable() {
         rb = GetComponent<Rigidbody2D>();
+        sprRenderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<BoxCollider2D>();
+
+        if (Debuging) {
+            Setup();
+        }
     }
 
     public void Setup() {
+        // tag and layer
         this.tag = GameTags.tags[(int)data.tag];
         this.gameObject.layer = (int)data.layer;
-        GetComponent<SpriteRenderer>().color = data.entityColor;
+
+        if (xDir == 1) {
+            transform.localScale = new Vector2(-1, 1);
+        }
+        if (xDir == -1) {
+            transform.localScale = new Vector2(1, 1);
+        }
+
+        if (data.isSimpleSprite) {
+            sprRenderer.enabled = true;
+            sprRenderer.sprite = data.sprite;
+        }
+        else {
+            sprRenderer.enabled = false;
+            Instantiate(data.graphic_holder, transform.position, Quaternion.identity, transform);
+        }
+
+        // collider
+        collider.size = data.collSize;
+        collider.offset = data.collOffset;
+
+        wasEnabled = true;
     }
 
     private void FixedUpdate() {
-        Move();
+        if (wasEnabled) {
+            Move();
+        }
     }
 
     private void OnBecameInvisible() {

@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce03b6cc569963f4096cead48298803d, type: 3}
-  m_Name: Log
+  m_Name: car
   m_EditorClassIdentifier: 
-  speed: 150
+  speed: 200
   obj: {fileID: 0}
-  tag: 0
-  layer: 6
-  entityColor: {r: 0.1981132, g: 0.07697724, b: 0, a: 1}
+  tag: 1
+  layer: 8
+  collSize: {x: 0.8715422, y: 0.59}
+  collOffset: {x: 0.03255308, y: 0}
+  isSimpleSprite: 1
+  graphic_holder: {fileID: 0}
+  sprite: {fileID: 587725381, guid: 2c186477375de124a9e9bb35cd1bfa9a, type: 3}

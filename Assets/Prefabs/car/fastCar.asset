@@ -16,4 +16,8 @@ MonoBehaviour:
   obj: {fileID: 0}
   tag: 1
   layer: 8
-  entityColor: {r: 1, g: 0.50728726, b: 0.09019607, a: 1}
+  collSize: {x: 0.8268607, y: 0.6979808}
+  collOffset: {x: 0.0102123, y: 0}
+  isSimpleSprite: 1
+  graphic_holder: {fileID: 0}
+  sprite: {fileID: -1808134863, guid: 2c186477375de124a9e9bb35cd1bfa9a, type: 3}
