@@ -16,4 +16,4 @@ MonoBehaviour:
   baseSpeed: 200
   scorePerEndPoint: 200
   scoreFly: 300
-  totalTime: 60
+  totalTime: 20

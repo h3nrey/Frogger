@@ -227,6 +227,7 @@ public class PlayerController : MonoBehaviour {
 
     private void handlePlayerTime() {
         currentTime -= Time.deltaTime;
+        GameManager.Game.UpdateTimeSlideValue(currentTime, data.totalTime);
 
         if (currentTime <= 0) {
             onDie?.Invoke();
@@ -272,6 +273,7 @@ public class PlayerController : MonoBehaviour {
 
     private void RestartPlayer() {
         transform.position = startPoint.position;
+        transform.rotation = Quaternion.Euler(Vector3.zero);
         isAlive = true;
     }
 
