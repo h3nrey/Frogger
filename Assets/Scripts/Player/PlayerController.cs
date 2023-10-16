@@ -29,8 +29,13 @@ public class PlayerController : MonoBehaviour {
     public int currentTries;
 
     // Movement
-    [SerializeField]
-    private float speed;
+    [ReadOnly]
+    [SerializeField] private float speed;
+
+    [ReadOnly]
+    [SerializeField] private Vector3 targetRot;
+
+    [SerializeField] private float rotationSpeed;
 
     [SerializeField]
     private float minY, maxX;
@@ -84,6 +89,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private Rigidbody2D rb;
 
+    [SerializeField]
+    private Animator anim;
+
     #endregion Properties
 
     #region Defaul Methods
@@ -101,7 +109,10 @@ public class PlayerController : MonoBehaviour {
         currentTime = data.totalTime;
 
         // events
-        onMove.AddListener((Vector2 dir) => Move(dir));
+        onMove.AddListener((Vector2 dir) => {
+            Move(dir);
+            anim.SetTrigger("move");
+        });
         onDie.AddListener(Die);
 
         onReachEndPoint.AddListener(handleWhenReachEndPoint);
@@ -118,6 +129,7 @@ public class PlayerController : MonoBehaviour {
     private void Update() {
         if (isAlive) {
             handlePlayerTime();
+            SmoothRotate();
         }
     }
 
@@ -140,7 +152,26 @@ public class PlayerController : MonoBehaviour {
         if (dir == Vector2.down && pos.y <= minY) return;
         if ((dir == Vector2.left && pos.x <= -maxX) || (dir == Vector2.right && pos.x >= maxX)) return;
 
+        // handle rotation
+        if (dir == Vector2.down) {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+        }
+        else if (dir == Vector2.up) {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+        else if (dir == Vector2.left) {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+        }
+        else if (dir == Vector2.right) {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
+        }
         rb.MovePosition(new Vector2(pos.x + (dir.x * speed), pos.y + (dir.y * speed)));
+    }
+
+    private void SmoothRotate() {
+        Quaternion curQ = transform.rotation;
+        Quaternion targetQ = Quaternion.Euler(targetRot);
+        //transform.rotation = Quaternion.Lerp(curQ, targetQ, rotationSpeed * Time.deltaTime);
     }
 
     #endregion Movement
