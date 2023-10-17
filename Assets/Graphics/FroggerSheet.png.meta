@@ -335,7 +335,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -343,6 +343,90 @@ TextureImporter:
       bones: []
       spriteID: 871d1870878aa4f4693dffdbefb0aba0
       internalID: 1796993280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lilypadHolder_left
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 275
+        width: 8
+        height: 24
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21cc92fa9f2b714ba4ea4c53d3c15dc
+      internalID: 1022352210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lilipadHolder_mid
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 275
+        width: 8
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54a75b602e40f0341bd263855c24adf7
+      internalID: -1090043653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LilypadHolder_right
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 275
+        width: 8
+        height: 24
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d016860971a6e9a4dbb1fe83b5a4651c
+      internalID: 1231486468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lilypad_top
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 291
+        width: 16
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f04a0cbc84894d4384455879b3116dc
+      internalID: 1039919147
       vertices: []
       indices: 
       edges: []
@@ -358,6 +442,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      LilypadHolder_Right: -996358796
+      LilypadHolder_right: 1231486468
+      Lilypad_top: 1039919147
       calcada: -1610265292
       car_fast: -1808134863
       car_long: -796740953
@@ -366,6 +453,9 @@ TextureImporter:
       frogger_long: 1411208438
       frogger_short: 331495035
       life: 1796993280
+      lilipadHolder_mid: -1090043653
+      lilipadHolder_top: -2119693716
+      lilypadHolder_left: 1022352210
       log_end: 116911232
       log_mid: -97564700
       log_start: -1834228763
