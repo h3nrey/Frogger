@@ -1766,7 +1766,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362807202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -4.5, z: 0}
+  m_LocalPosition: {x: -7.07, y: 1.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1828,6 +1828,7 @@ MonoBehaviour:
   speed: 1
   targetRot: {x: 0, y: 0, z: 0}
   rotationSpeed: 0.5
+  curMaxY: 0
   minY: -4.5
   maxX: 11.5
   startPoint: {fileID: 1286975633}
@@ -6858,7 +6859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4093805674560425954, guid: d73ed0a7c182ff949acea780ac608b7d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.02
+      value: -12.68
       objectReference: {fileID: 0}
     - target: {fileID: 4093805674560425954, guid: d73ed0a7c182ff949acea780ac608b7d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6896,11 +6897,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4093805674560425955, guid: d73ed0a7c182ff949acea780ac608b7d, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 68884ad32231043408ee9f0d688b8002, type: 2}
+    - target: {fileID: 4093805674560425955, guid: d73ed0a7c182ff949acea780ac608b7d, type: 3}
+      propertyPath: Debuging
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093805674560425957, guid: d73ed0a7c182ff949acea780ac608b7d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4093805674560425958, guid: d73ed0a7c182ff949acea780ac608b7d, type: 3}
       propertyPath: m_Name
       value: MoveableEntity
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4093805674560425958, guid: d73ed0a7c182ff949acea780ac608b7d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292676651943252323, guid: d73ed0a7c182ff949acea780ac608b7d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0a41921ea52956e4891297b4728802dd, type: 2}
+    m_RemovedComponents:
+    - {fileID: 8292676651943252323, guid: d73ed0a7c182ff949acea780ac608b7d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d73ed0a7c182ff949acea780ac608b7d, type: 3}
 --- !u!1 &1560065911
 GameObject:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,6 +49,12 @@ public class HandleMovement : MonoBehaviour {
         else {
             sprRenderer.enabled = false;
             Instantiate(data.graphic_holder, transform.position, Quaternion.identity, transform);
+        }
+
+        // Add extra scripts
+        foreach (var scriptName in data.extraScripts) {
+            Type scriptType = Type.GetType(scriptName + ",Assembly-CSharp");
+            gameObject.AddComponent(scriptType);
         }
 
         // collider

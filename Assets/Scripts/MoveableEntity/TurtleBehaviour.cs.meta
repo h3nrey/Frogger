@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: d27cfb60ca93e214fba42b76bdac60ab
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - data: {fileID: 11400000, guid: 68884ad32231043408ee9f0d688b8002, type: 2}
+  - turnClip: {fileID: 7400000, guid: eefe2090f0833494eb900e58db2c6257, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

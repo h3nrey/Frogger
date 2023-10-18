@@ -431,6 +431,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: turtleUp_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 319
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65afebeeab63f544596fd42fd262a776
+      internalID: -1775165536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleUp_2
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 319
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02fd225ce8dda49489103c9bafb45d0c
+      internalID: -884644980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleUp_3
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 319
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f121ead33f8fbf40ae61bc8c6093e7a
+      internalID: -277395000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleDown_1
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 319
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdc6660d8d5a06547bfedecce34d3bdd
+      internalID: 1462085478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleDown_2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 319
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892033bb4714f154e97cc7fa38c75521
+      internalID: -1016673447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -459,6 +564,11 @@ TextureImporter:
       log_end: 116911232
       log_mid: -97564700
       log_start: -1834228763
+      turtleDown_1: 1462085478
+      turtleDown_2: -1016673447
+      turtleUp_1: -1775165536
+      turtleUp_2: -884644980
+      turtleUp_3: -277395000
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

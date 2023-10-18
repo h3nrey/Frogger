@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private float rotationSpeed;
 
+    [ReadOnly]
+    [SerializeField] private float curMaxY;
+
     [SerializeField]
     private float minY, maxX;
 
@@ -107,11 +110,13 @@ public class PlayerController : MonoBehaviour {
         isAlive = true;
         currentTries = data.tries;
         currentTime = data.totalTime;
+        curMaxY = transform.position.y - 1;
 
         // events
         onMove.AddListener((Vector2 dir) => {
             Move(dir);
             anim.SetTrigger("move");
+            CheckIfMovedTowards(dir);
         });
         onDie.AddListener(Die);
 
@@ -172,6 +177,15 @@ public class PlayerController : MonoBehaviour {
         Quaternion curQ = transform.rotation;
         Quaternion targetQ = Quaternion.Euler(targetRot);
         //transform.rotation = Quaternion.Lerp(curQ, targetQ, rotationSpeed * Time.deltaTime);
+    }
+
+    private void CheckIfMovedTowards(Vector2 dir) {
+        Vector2 pos = transform.position;
+
+        if (dir == Vector2.up && pos.y > curMaxY) {
+            curMaxY = pos.y;
+            score += data.scoreForMovingTowards;
+        }
     }
 
     #endregion Movement

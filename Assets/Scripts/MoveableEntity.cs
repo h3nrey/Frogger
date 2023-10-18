@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,4 +15,6 @@ public class MoveableEntity : ScriptableObject {
     public bool isSimpleSprite;
     public GameObject graphic_holder;
     public Sprite sprite;
+
+    public string[] extraScripts;
 }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa654f9af3ca1f4db8109ec29e57c83, type: 3}
+  m_Name: Turtle
+  m_EditorClassIdentifier: 
+  speed: 120
+  obj: {fileID: 0}
+  tag: 0
+  layer: 6
+  collSize: {x: 2, y: 1}
+  collOffset: {x: 0, y: 0}
+  isSimpleSprite: 0
+  graphic_holder: {fileID: 5437782220078621995, guid: 9555105a0760b1646bebce4968a54b60, type: 3}
+  sprite: {fileID: 0}
+  extraScripts:
+  - TurtleBehaviour
+  turnCooldownRange:
+  - 1.5
+  - 2.6

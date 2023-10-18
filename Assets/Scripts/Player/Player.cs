@@ -6,7 +6,10 @@ using UnityEngine;
 public class Player : ScriptableObject {
     public int tries;
     public float baseSpeed;
+
     public int scorePerEndPoint;
     public int scoreFly;
+    public int scoreForMovingTowards;
+
     public float totalTime;
 }
