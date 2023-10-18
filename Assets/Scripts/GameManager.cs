@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour {
     public static GameManager Game;
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private Slider timeSlider;
 
     [SerializeField] private Transform triesHolder;
+
+    [SerializeField] private TMP_Text scoreText;
 
     private void Start() {
         if (Game == null) {
@@ -40,6 +43,11 @@ public class GameManager : MonoBehaviour {
 
     private void Update() {
         UpdateTriesIcon();
+        UpdateScoreText();
+    }
+
+    public void UpdateScoreText() {
+        scoreText.text = PlayerController.instance.score.ToString();
     }
 
     public void UpdateTriesIcon() {

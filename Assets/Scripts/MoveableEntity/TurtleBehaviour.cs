@@ -34,7 +34,9 @@ public class TurtleBehaviour : MonoBehaviour {
     }
 
     public IEnumerator Turn() {
+        float clipLength = anims[0].runtimeAnimatorController.animationClips[1].length; ;
         while (true) {
+            //clip
             // Anim
             //foreach (Animator anim in anims) {
             //    anim.SetTrigger("Turn");
@@ -47,9 +49,13 @@ public class TurtleBehaviour : MonoBehaviour {
 
             Coroutines.DoAfter(() => {
                 col.enabled = false;
-            }, turnClip.length / 2, this);
+            }, clipLength / 2, this);
 
-            yield return new WaitForSeconds(turnClip.length);
+            //Coroutines.DoAfter(() => {
+            //    //col.enabled = false;
+            //}, turnClip.length / 2, this);
+
+            yield return new WaitForSeconds(clipLength);
             col.enabled = true;
 
             float turnCooldown = Random.Range(turnCooldownRange[0], turnCooldownRange[1]);
