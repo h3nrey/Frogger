@@ -8,6 +8,7 @@ TagManager:
   - car
   - log
   - endPoint
+  - fly
   layers:
   - Default
   - TransparentFX
@@ -53,4 +54,7 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 1991260857
+    locked: 0
+  - name: UI
+    uniqueID: 260874709
     locked: 0

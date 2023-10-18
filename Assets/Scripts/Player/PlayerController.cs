@@ -17,8 +17,10 @@ public class PlayerController : MonoBehaviour {
     public UnityEvent<Vector2> onMove;
 
     public UnityEvent onDie;
+    public UnityEvent onGameOver;
     public UnityEvent onReachEndPoint;
     public UnityEvent onReachAllEndPoints;
+    public UnityEvent onRestartLevel;
 
     #endregion Events
 
@@ -85,6 +87,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Flags")]
     public bool isAlive;
 
+    public bool gameIsOver;
     public bool isTouchingPlataform;
 
     // Components
@@ -94,6 +97,9 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField]
     private Animator anim;
+
+    [SerializeField]
+    private GameObject graphicHolder;
 
     #endregion Properties
 
@@ -114,11 +120,17 @@ public class PlayerController : MonoBehaviour {
 
         // events
         onMove.AddListener((Vector2 dir) => {
+            if (!isAlive) return;
             Move(dir);
             anim.SetTrigger("move");
             CheckIfMovedTowards(dir);
         });
         onDie.AddListener(Die);
+        onGameOver.AddListener(GameOver);
+        onRestartLevel.AddListener(() => {
+            if (!gameIsOver) return;
+            SceneCaller.CallScene("");
+        });
 
         onReachEndPoint.AddListener(handleWhenReachEndPoint);
         onReachAllEndPoints.AddListener(winLevel);
@@ -197,7 +209,6 @@ public class PlayerController : MonoBehaviour {
 
         if (touchingPlataforms.Length > 0) {
             Transform plataform = touchingPlataforms[0].transform;
-            print($"player y: {transform.position.y} - plataform y: {plataform.position.y}");
             isTouchingPlataform = true;
             if (transform.position.y < plataform.position.y) return;
             transform.SetParent(plataform);
@@ -233,6 +244,11 @@ public class PlayerController : MonoBehaviour {
                 onDie?.Invoke();
             }
         }
+
+        if (otherObj.CompareTag(GameTags.tags[(int)GameTagsMapper.FLY])) {
+            score += data.scoreFly;
+            otherObj.GetComponent<FlyBehaviour>().Die();
+        }
     }
 
     #endregion Collision
@@ -256,11 +272,22 @@ public class PlayerController : MonoBehaviour {
         if (isAlive == false) return;
         isAlive = false;
         currentTries -= 1;
+
+        if (currentTries < 1) {
+            onGameOver.Invoke();
+            return;
+        }
+
         currentTime = data.totalTime;
 
         Coroutines.DoAfter(() => {
             RestartPlayer();
         }, 0.5f, this);
+    }
+
+    private void GameOver() {
+        gameIsOver = true;
+        graphicHolder.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     #endregion Die
@@ -282,6 +309,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void winLevel() {
+        print("win");
+        score += data.scoreAllEndPoints;
         Coroutines.DoAfter(() => RestartPlayer(), 1f, this);
     }
 

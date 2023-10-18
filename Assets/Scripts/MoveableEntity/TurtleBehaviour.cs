@@ -26,7 +26,6 @@ public class TurtleBehaviour : MonoBehaviour {
 
         float turnCooldown = Random.Range(turnCooldownRange[0], turnCooldownRange[1]);
 
-        print($"turn cooldown: {turnCooldown}");
         Coroutines.DoAfter(() => {
             StartCoroutine(Turn());
         }, turnCooldown, this);
@@ -36,12 +35,6 @@ public class TurtleBehaviour : MonoBehaviour {
     public IEnumerator Turn() {
         float clipLength = anims[0].runtimeAnimatorController.animationClips[1].length; ;
         while (true) {
-            //clip
-            // Anim
-            //foreach (Animator anim in anims) {
-            //    anim.SetTrigger("Turn");
-            //}
-
             for (int i = 0; i < anims.Count; i++) {
                 yield return new WaitForSeconds(i * 0.05f);
                 anims[i].SetTrigger("Turn");
@@ -51,15 +44,10 @@ public class TurtleBehaviour : MonoBehaviour {
                 col.enabled = false;
             }, clipLength / 2, this);
 
-            //Coroutines.DoAfter(() => {
-            //    //col.enabled = false;
-            //}, turnClip.length / 2, this);
-
             yield return new WaitForSeconds(clipLength);
             col.enabled = true;
 
             float turnCooldown = Random.Range(turnCooldownRange[0], turnCooldownRange[1]);
-            print($"turn cooldown: {turnCooldown}");
             yield return new WaitForSeconds(turnCooldown);
         }
     }

@@ -7,7 +7,7 @@ public class EndPointBehaviour : MonoBehaviour {
 
     [ReadOnly]
     [SerializeField]
-    private bool isAvaiable;
+    public bool isAvaiable;
 
     [SerializeField]
     private GameObject fillChild;
@@ -18,8 +18,8 @@ public class EndPointBehaviour : MonoBehaviour {
 
     public bool Fill() {
         if (!isAvaiable) return false;
+        transform.parent.GetComponent<EndPointsController>().UpdateAvaiableLilypads(transform.name);
 
-        print("was filled");
         fillChild.SetActive(true);
         // update the sprite;
         isAvaiable = false;

@@ -18,7 +18,11 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] private Transform triesHolder;
 
+    [Header("Score")]
     [SerializeField] private TMP_Text scoreText;
+
+    [Header("Game Over")]
+    [SerializeField] private GameObject gameOverModal;
 
     private void Start() {
         if (Game == null) {
@@ -60,6 +64,10 @@ public class GameManager : MonoBehaviour {
 
             if (i < tries) icon.SetActive(true);
         }
+    }
+
+    public void ShowGameOverModal() {
+        gameOverModal.SetActive(true);
     }
 
     public void UpdateTimeSlideValue(float curTime, float totalTime) {

@@ -34,4 +34,10 @@ public class PlayerInput : MonoBehaviour {
             print("jumped");
         }
     }
+
+    public void onRestart(InputAction.CallbackContext context) {
+        if (context.started) {
+            PlayerController.instance.onRestartLevel?.Invoke();
+        }
+    }
 }
