@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tries: 3
   baseSpeed: 200
-  scorePerEndPoint: 0
+  scorePerEndPoint: 50
   scoreAllEndPoints: 200
   scoreFly: 200
-  scoreForMovingTowards: 0
+  scoreForMovingTowards: 10
   totalTime: 20

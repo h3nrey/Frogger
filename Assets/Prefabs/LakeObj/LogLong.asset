@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce03b6cc569963f4096cead48298803d, type: 3}
   m_Name: LogLong
   m_EditorClassIdentifier: 
-  speed: 200
+  speed: 280
   obj: {fileID: 0}
   tag: 0
   layer: 6
-  collSize: {x: 2.5, y: 1}
+  collSize: {x: 3.6, y: 1}
   collOffset: {x: 0, y: 0}
   isSimpleSprite: 0
   graphic_holder: {fileID: 2676713814517802486, guid: 6b6d9a645e2889c4db31e78d52dc237e, type: 3}
   sprite: {fileID: 0}
+  extraScripts: []

@@ -90,6 +90,9 @@ public class PlayerController : MonoBehaviour {
     public bool gameIsOver;
     public bool isTouchingPlataform;
 
+    [Header("Die")]
+    public AnimationClip dieClip;
+
     // Components
     [Header("Components")]
     [SerializeField]
@@ -122,6 +125,7 @@ public class PlayerController : MonoBehaviour {
         onMove.AddListener((Vector2 dir) => {
             if (!isAlive) return;
             Move(dir);
+            GameManager.Game.PlaySound("Move");
             anim.SetTrigger("move");
             CheckIfMovedTowards(dir);
         });
@@ -273,8 +277,14 @@ public class PlayerController : MonoBehaviour {
         isAlive = false;
         currentTries -= 1;
 
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+        anim.SetTrigger("Die");
+        GameManager.Game.PlaySound("Die");
+
         if (currentTries < 1) {
-            onGameOver.Invoke();
+            Coroutines.DoAfter(() => {
+                onGameOver.Invoke();
+            }, dieClip.length, this);
             return;
         }
 
@@ -282,10 +292,11 @@ public class PlayerController : MonoBehaviour {
 
         Coroutines.DoAfter(() => {
             RestartPlayer();
-        }, 0.5f, this);
+        }, dieClip.length, this);
     }
 
     private void GameOver() {
+        GameManager.Game.PlaySound("GameOver");
         gameIsOver = true;
         graphicHolder.GetComponent<SpriteRenderer>().enabled = false;
     }
@@ -299,6 +310,9 @@ public class PlayerController : MonoBehaviour {
         isAlive = false;
         reachedEndPoints++;
         currentTime = data.totalTime;
+        transform.parent = null;
+        graphicHolder.SetActive(false);
+        GameManager.Game.PlaySound("ReachLilypad");
 
         if (reachedEndPoints >= 5) {
             onReachAllEndPoints?.Invoke();
@@ -315,6 +329,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void RestartPlayer() {
+        graphicHolder.SetActive(true);
+        anim.Play("Startup");
         transform.position = startPoint.position;
         transform.rotation = Quaternion.Euler(Vector3.zero);
         isAlive = true;

@@ -9,20 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa654f9af3ca1f4db8109ec29e57c83, type: 3}
-  m_Name: Turtle
+  m_Script: {fileID: 11500000, guid: ce03b6cc569963f4096cead48298803d, type: 3}
+  m_Name: logMid
   m_EditorClassIdentifier: 
-  speed: 120
+  speed: 200
   obj: {fileID: 0}
   tag: 0
   layer: 6
-  collSize: {x: 2, y: 1}
+  collSize: {x: 2.5, y: 1}
   collOffset: {x: 0, y: 0}
   isSimpleSprite: 0
-  graphic_holder: {fileID: 5437782220078621995, guid: 9555105a0760b1646bebce4968a54b60, type: 3}
+  graphic_holder: {fileID: 2676713814517802486, guid: 2267685accc4f9144810b4f66a215de0, type: 3}
   sprite: {fileID: 0}
-  extraScripts:
-  - TurtleBehaviour
-  turnCooldownRange:
-  - 2.9
-  - 3
+  extraScripts: []

@@ -42,12 +42,20 @@ public class EndPointsController : MonoBehaviour {
         StartCoroutine(InstantiateFly());
     }
 
+    private void Update() {
+        if (avaiableLilypads.Count < 1) {
+            StopAllCoroutines();
+            flyObject.SetActive(false);
+        }
+    }
+
     public IEnumerator InstantiateFly() {
         if (avaiableLilypads.Count < 1) yield return new WaitForSeconds(0);
         yield return new WaitForSeconds(spawnFlyCooldown);
         Transform lilypad = GetRandomLily();
 
         flyObject.GetComponent<FlyBehaviour>().EnableFly();
+        if (avaiableLilypads.Count < 1) yield return new WaitForSeconds(0);
         flyObject.transform.position = lilypad.position;
     }
 
